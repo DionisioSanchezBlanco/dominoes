@@ -1,4 +1,4 @@
-# Stage 1. Setting up the game
+# Stage 2. The interface
 import random
 
 status_players = ['player', 'computer']
@@ -12,6 +12,7 @@ domino_snake = []
 stock_pieces = [n for n in stock_total[0:14]]
 player_pieces = [n for n in stock_total[14:21]]
 cpu_pieces = [n for n in stock_total[21:28]]
+counter = 1
 
 for start_piece in snakes:
     if start_piece in player_pieces:
@@ -26,8 +27,16 @@ for start_piece in snakes:
         cpu_pieces.remove(start_piece)
         break
 
-print(f'Stock pieces: {stock_pieces}')
-print(f'Computer pieces: {cpu_pieces}')
-print(f'player pieces: {player_pieces}')
-print(f'Domino snake: {domino_snake}')
-print(f'Status: {status}')
+print('=' * 70)
+print(f'Stock size: {len(stock_pieces)}')
+print(f'Computer pieces: {len(cpu_pieces)}')
+print(f'\n{domino_snake[0]}\n')
+print('Your pieces:')
+for pieces in player_pieces:
+    print(f'{counter}:{pieces}')
+    counter += 1
+
+if status == 'player':
+    print(f"\nStatus: It's your turn to make a move. Enter your command.")
+else:
+    print(f"\nStatus: Computer is about to make a move. Press Enter to continue...")
